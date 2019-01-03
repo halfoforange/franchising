@@ -30,7 +30,7 @@ export class AuthenticationComponent {
   login() {
     this.app.authenticate(this.user, callback =>
       {
-        this.router.navigateByUrl('/patient');}
+        this.router.navigateByUrl('/admin');}
     );
   }
 

@@ -19,9 +19,12 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull()
     private String password;
 
+    @Column(unique = true)
+    @NotNull
+    private String login;
     @NotNull
     @Email
     private String email;

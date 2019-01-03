@@ -22,17 +22,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/api/customer/**").hasAuthority(UserRole.CUSTOMER.name());
+/*        http.authorizeRequests().antMatchers("/api/customer/**").hasAuthority(UserRole.CUSTOMER.name());
         http.authorizeRequests().antMatchers("/api/admin/**").hasAuthority(UserRole.ADMIN.name());
-        http.authorizeRequests().antMatchers("/api/user/registration").permitAll();
+        http.authorizeRequests().antMatchers("/api/user/registration").permitAll();*/
         http.authorizeRequests()
                 .antMatchers("/index.html", "/", "/**.js", "/**.js.map").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic().and().csrf().disable();
-        http.formLogin().loginPage("/").usernameParameter("email")
+/*        http.formLogin().loginPage("/").usernameParameter("email")
                 .passwordParameter("password")
                 .loginProcessingUrl("/api/authentication")
-                .permitAll();
+                .permitAll();*/
+        http.authorizeRequests().anyRequest().permitAll();
     }
 
     @Autowired

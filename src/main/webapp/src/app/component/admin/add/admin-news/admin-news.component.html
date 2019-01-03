@@ -1,0 +1,14 @@
+<div>
+  <form (submit)="addNews()">
+    <div>
+      <input [(ngModel)]="news.theme" name="news.theme" placeholder="Введите заголовок новости"/>
+    </div>
+    <div>
+      <textarea [(ngModel)]="news.description" name="news.description" placeholder="А здесь - текст описания"></textarea>
+    </div>
+    <div>
+      <input [(ngModel)]="news.attach" name="news.attach" placeholder="Здесь - ссылка на dropbox с файлами"/>
+    </div>
+    <button type="submit">Опубликовать</button>
+  </form>
+</div>

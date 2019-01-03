@@ -1,10 +1,9 @@
 <header class="header" (click)="toggle_class()">
-  <div class="logo"><a class="link" href="https://aston-health.com">Aston Health</a></div>
+  <div class="logo"><a class="link" href="https://google.com">google</a></div>
 
 </header>
 
 <div class="form-main fadeIn" [ngClass]="LoginActive">
-  <div [ngClass]="RegisterSuccess" class="animated fadeInDown success_mes " ><h1 class=" header-two ">Ваша регистрация прошла успешно! <br> Используйте данные для входа в систему.</h1></div>
   <form (submit)="login()" [ngClass]="LoginActive">
     <h2 class="main__title">Вход</h2>
     <div class="block__item">
@@ -14,38 +13,12 @@
     <div class="block__item">
       <label>Пароль</label>
       <input type="password" name="user.password" [(ngModel)]="user.password" placeholder="Введите пароль"/>
-      <a class="link password_reminder" href="# ">Вспомнить пароль</a>
+      <a class="link password_reminder" href="# ">Забыл пароль</a>
     </div>
     <button type="submit" class="main-button main-button--m">Войти</button>
   </form>
   <div class="block__item block__link">
     <a class="link " (click)="showRegister();">Зарегистрироваться</a>
   </div>
-
-</div>
-<div class="form-main fadeIn" [ngClass]="RegisterActive">
-  <form (submit)="register()">
-    <h2 class="main__title">Регистрация</h2>
-    <div class="block__item">
-      <label>Имя</label>
-      <input name="user.name" [(ngModel)]="user.name" placeholder="Имя"/>
-    </div>
-    <div class="block__item">
-      <label>Email</label>
-      <input type="email" name="user.email" [(ngModel)]="user.email" placeholder="Email"/>
-    </div>
-    <div class="block__item">
-      <label>Пароль</label>
-      <input type="password" name="user.password" [(ngModel)]="user.password" placeholder="Пароль"/>
-      <div class=" block__link">
-        <a class="link " (click)="showRegister();">У меня уже есть аккаунт</a>
-      </div>
-    </div>
-
-    <button type="submit" class="main-button main-button--m ">Зарегистрироваться</button>
-  </form>
-
-
-
 
 </div>

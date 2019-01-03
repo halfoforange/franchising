@@ -14,7 +14,6 @@ public class Instruction {
     @Column(columnDefinition = "text", nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "files")
-    @JoinTable()
-    private List<File> files;
+/*    @OneToMany(mappedBy = "files")
+    private List<File> files;*/
 }

@@ -1,0 +1,17 @@
+<p>
+    admin-news-list works!
+</p>
+<br>
+<div *ngIf="list">
+    <div *ngFor="let news of list.content">
+        id = {{news.id}} theme = {{news.theme}} description = {{news.description}} attach = {{news.attach}} date
+        = {{news.date}}
+        <br>
+    </div>
+    <br>
+    <br>
+    <div *ngFor="let page of pages">
+        <a routerLink="../{{page}}">{{page}}</a>
+    </div>
+</div>
+<a routerLink="../../add/news">Добавить новость</a>

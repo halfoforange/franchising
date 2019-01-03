@@ -22,4 +22,10 @@ public class News {
     private String attach;
 
     private LocalDate date;
+
+
+    @PrePersist
+    void prePersist(){
+        date=LocalDate.now();
+    }
 }
