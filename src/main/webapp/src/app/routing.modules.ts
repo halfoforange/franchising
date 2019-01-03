@@ -9,9 +9,11 @@ import {AdminNewsListComponent} from "./component/admin/admin-news-list/admin-ne
 import {AdminInstructionListComponent} from "./component/admin/admin-instruction-list/admin-instruction-list.component";
 import {AdminInstructionComponent} from "./component/admin/add/admin-instruction/admin-instruction.component";
 import {AdminCalendarComponent} from "./component/admin/add/admin-calendar/admin-calendar.component";
+import {AdminDictionaryComponent} from "./component/admin/add/admin-dictionary/admin-dictionary.component";
 
 const routes: Routes = [
-    {path: '', component: AuthenticationComponent},
+/*    {path: '', component: AuthenticationComponent},*/
+    {path: '', redirectTo: 'admin/news', pathMatch: 'full'},
     {
         path: 'admin', component: AdminComponent, children: [
             {path: '', redirectTo: 'news', pathMatch: 'full'},
@@ -23,9 +25,10 @@ const routes: Routes = [
                     {path: '', redirectTo: 'news', pathMatch: 'full'},
                     {path: "news", component: AdminNewsComponent},
                     {path: "instruction", component: AdminInstructionComponent},
-                    {path: "calendar", component: AdminCalendarComponent}
+                    {path: "calendar", component: AdminCalendarComponent},
+                    {path: "dictionary/:entityName", component: AdminDictionaryComponent}
                 ]
-            }
+            },
         ]
     },
     {path: 'customer', component: CustomerComponent}

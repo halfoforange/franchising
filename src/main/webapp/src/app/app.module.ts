@@ -27,6 +27,7 @@ import { AdminInstructionComponent } from './component/admin/add/admin-instructi
 import { AdminCalendarComponent } from './component/admin/add/admin-calendar/admin-calendar.component';
 import { AdminNewsListComponent } from './component/admin/admin-news-list/admin-news-list.component';
 import { AdminInstructionListComponent } from './component/admin/admin-instruction-list/admin-instruction-list.component';
+import { AdminDictionaryComponent } from './component/admin/add/admin-dictionary/admin-dictionary.component';
 
 //TODO глобальную обработку exceptions на фронте
 @Injectable()
@@ -60,6 +61,7 @@ export class XhrInterceptor implements HttpInterceptor {
         AdminCalendarComponent,
         AdminNewsListComponent,
         AdminInstructionListComponent,
+        AdminDictionaryComponent,
         AuthenticationComponent,
     ],
     imports: [

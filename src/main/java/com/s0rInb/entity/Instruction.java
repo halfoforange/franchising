@@ -1,8 +1,13 @@
 package com.s0rInb.entity;
 
+import com.s0rInb.entity.dictionary.Category;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Data
 public class Instruction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +19,10 @@ public class Instruction {
     @Column(columnDefinition = "text", nullable = false)
     private String description;
 
-/*    @OneToMany(mappedBy = "files")
-    private List<File> files;*/
+    @OneToMany(mappedBy = "instruction")
+    private List<File> files;
+
+    @ManyToOne
+    @JoinColumn(name = "category", nullable = false)
+    private Category category;
 }

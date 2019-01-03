@@ -17,7 +17,7 @@ public class File {
     @Column(columnDefinition = "varchar(512)")
     private String url;
 
-/*    @JoinColumn(name = "instruction")
+    @JoinColumn(name = "instruction")
     @ManyToOne
-    private Instruction instruction;*/
+    private Instruction instruction;
 }

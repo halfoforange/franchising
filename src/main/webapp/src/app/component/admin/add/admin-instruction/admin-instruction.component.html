@@ -1,3 +1,16 @@
-<p>
-  admin-instruction works!
-</p>
+<div>
+    <form (submit)="addInstruction()" *ngIf="categories && instruction">
+        <div *ngFor="let category of categories" [ngModelGroup]="instruction.category">
+            {{category.name}}
+            <input type="radio" [(ngModel)]="instruction.category.id" value="{{category.id}}" name="instruction.category.id" placeholder="{{category.name}}">
+        </div>
+        <div>
+            <input [(ngModel)]="instruction.theme" name="instruction.theme" placeholder="Введите заголовок материала"/>
+        </div>
+        <div>
+            <textarea [(ngModel)]="instruction.description" name="instruction.description"
+                      placeholder="А здесь - текст описания"></textarea>
+        </div>
+        <button type="submit">Опубликовать</button>
+    </form>
+</div>

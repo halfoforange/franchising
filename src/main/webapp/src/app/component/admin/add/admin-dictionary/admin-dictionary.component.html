@@ -1,0 +1,9 @@
+<div>
+    <p>Добавить новое значение: {{entityName}}</p>
+    <form (submit)="addDictionary()">
+        <div>
+            <input [(ngModel)]="dictionary.name" name="news.theme" placeholder="Значение"/>
+        </div>
+        <button type="submit">Опубликовать</button>
+    </form>
+</div>

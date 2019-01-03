@@ -1,11 +1,25 @@
 package com.s0rInb.service;
 
+import com.s0rInb.entity.Instruction;
 import com.s0rInb.entity.News;
+import com.s0rInb.entity.dictionary.Category;
+import com.s0rInb.entity.dictionary.Dictionary;
+import com.s0rInb.repository.InstructionRepository;
 import com.s0rInb.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class AdminService {
@@ -13,11 +27,33 @@ public class AdminService {
     @Autowired
     NewsRepository newsRepository;
 
+    @Autowired
+    InstructionRepository instructionRepository;
+    @PersistenceContext
+    private EntityManager em;
+
     public News addNews(News news) {
         return newsRepository.save(news);
     }
 
-    public Page<News> getNewsPage(Pageable pageable){
+    public Page<News> getNewsPage(Pageable pageable) {
         return newsRepository.findAll(pageable);
+    }
+
+    public Instruction addInstruction(Instruction instruction) {
+        return instructionRepository.save(instruction);
+    }
+
+    public Map<Category, List<Instruction>> getInstructions() {
+        return instructionRepository.findAll().stream().collect(
+                Collectors.groupingBy(Instruction::getCategory)
+        );
+    }
+
+
+    @Transactional
+    public void addNew(String dictionaryEntity, Dictionary dictionary) {
+        Query query = em.createNativeQuery("INSERT INTO " + dictionaryEntity + " (name) values ( \'" + dictionary.getName() + "\')");
+        query.executeUpdate();
     }
 }

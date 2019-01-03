@@ -1,3 +1,19 @@
 <p>
-  admin-instruction-list works!
+    admin-instruction-list works!
 </p>
+<br>
+<div *ngIf="instructionsMap">
+    <div *ngFor="let map of instructionsMap | keyvalue">
+        <h3>Название категории {{map.key}}</h3>
+        <div *ngFor="let instruction of map.value">
+            id = {{instruction.id}} theme = {{instruction.theme}} description = {{instruction.description}}
+            <br>
+        </div>
+        <br>
+    </div>
+    <br>
+    <br>
+</div>
+<a routerLink="../add/instruction">Добавить инструкцию</a>
+<br>
+<a routerLink="../add/dictionary/Category">Добавить новую категорию</a>

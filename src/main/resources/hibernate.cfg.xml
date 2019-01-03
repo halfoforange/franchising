@@ -8,6 +8,8 @@
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.username">franchising</property>
         <property name="connection.password">franchising</property>
+        <mapping package="com.s0rInb.entity"/>
+        <mapping package="com.s0rInb.entity.dictionary"/>
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>
 </hibernate-configuration>
