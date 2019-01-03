@@ -1,0 +1,97 @@
+/* AppComponent's private CSS styles */
+.main__wrapper {
+  max-width: 850px;
+  margin: 20px auto 0 auto;
+
+}
+
+h2 {
+  font-size: 2em;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/*nav a {*/
+/*padding: 5px 10px;*/
+/*text-decoration: none;*/
+/*margin-top: 10px;*/
+/*display: inline-block;*/
+/*background-color: #eee;*/
+/*border-radius: 4px;*/
+/*}*/
+/*nav a:visited, a:link {*/
+/*color: #607D8B;*/
+/*}*/
+/*nav a:hover {*/
+/*color: #039be5;*/
+/*background-color: #CFD8DC;*/
+/*}*/
+/*nav a.active {*/
+/*color: #039be5;*/
+/*}*/
+/*nav {*/
+/*display: flex;*/
+
+/*}*/
+/*nav button {*/
+/*padding: 5px 0;*/
+
+/*}*/
+/*nav button:focus {*/
+/*padding: 5px;*/
+/*outline: 0;*/
+/*}*/
+.select-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+
+}
+
+.input--select {
+  text-align: left;
+  white-space: nowrap;
+  max-width: 500px;
+  width: 100%;
+  font-weight: 700;
+
+  font-family: "Muller", sans-serif !important;
+  font-size: 1.6rem !important;
+
+  background: #fff !important;
+  border: 2px solid #E0E0E0 !important;
+  border-radius: 2px !important;
+  padding: 1.5rem 2.5rem !important;
+  min-width: 30rem !important;
+
+}
+.main__wrapper {
+
+  /* прикрутим анимацию */
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+/* Описываем анимацию свойства opacity */
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
