@@ -108,6 +108,6 @@ buildNumber.properties
 .mvn/timing.properties
 .idea
 src/main/resources/static
-shortgut.iml
+franchising.iml
 src/main/webapp/node_modules
 upload-dir
