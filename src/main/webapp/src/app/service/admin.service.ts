@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {News} from "../entity/news";
 import {Instruction} from "../entity/instruction";
 import {Dictionary} from "../entity/dictionary";
-
+import "rxjs-compat/add/operator/map";
+import "rxjs-compat/add/operator/catch";
 @Injectable({
     providedIn: 'root'
 })
@@ -18,7 +19,7 @@ export class AdminService {
     }
 
     getNewsList(pageNumber: number): Observable<any> {
-        return this.http.get("/api/admin/page/news/"+pageNumber)
+        return this.http.get("/api/admin/page/news/" + pageNumber)
     }
 
     addInstruction(instruction: Instruction): Observable<any> {
@@ -29,7 +30,22 @@ export class AdminService {
         return this.http.get("/api/admin/page/instruction/")
     }
 
-    addDictionary(entityName: string,dictionary: Dictionary): Observable<any>{
-        return this.http.post("/api/admin/dictionary/"+entityName, dictionary);
+    addDictionary(entityName: string, dictionary: Dictionary): Observable<any> {
+        return this.http.post("/api/admin/dictionary/" + entityName, dictionary);
     }
+
+    pushFileToStorage(multipart: File, description: string): Observable<any> {
+        let formdata: FormData = new FormData();
+        formdata.append('multipartFile', multipart);
+        formdata.append("description", description);
+
+        const req = new HttpRequest('POST', '/api/admin/file', formdata);
+
+        return this.http.request(req);
+    }
+
+/*    getFiles(): Observable<string[]> {
+        return this.http.get('/getallfiles')
+    }*/
+
 }

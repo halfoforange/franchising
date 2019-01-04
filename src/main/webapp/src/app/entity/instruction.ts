@@ -1,4 +1,5 @@
 import {Dictionary} from "./dictionary";
+import {File} from "./file";
 
 export class Instruction {
     id: number;
@@ -6,11 +7,6 @@ export class Instruction {
     description: string;
     category: Dictionary;
     files: File[];
-}
-export class File {
-    id: number;
-    description: string;
-    url: string;
 }
 
 export class InstructionsMap {

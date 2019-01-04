@@ -2,7 +2,8 @@
     <form (submit)="addInstruction()" *ngIf="categories && instruction">
         <div *ngFor="let category of categories" [ngModelGroup]="instruction.category">
             {{category.name}}
-            <input type="radio" [(ngModel)]="instruction.category.id" value="{{category.id}}" name="instruction.category.id" placeholder="{{category.name}}">
+            <input type="radio" [(ngModel)]="instruction.category.id" value="{{category.id}}"
+                   name="instruction.category.id" placeholder="{{category.name}}">
         </div>
         <div>
             <input [(ngModel)]="instruction.theme" name="instruction.theme" placeholder="Введите заголовок материала"/>
@@ -11,6 +12,19 @@
             <textarea [(ngModel)]="instruction.description" name="instruction.description"
                       placeholder="А здесь - текст описания"></textarea>
         </div>
+        <div *ngIf="instruction.files.length>0">
+            <div *ngFor="let files of instruction.files">
+                <a href="/api/dictionary/file?filename={{files.url}}">description = {{files.description}}</a>
+            </div>
+
+        </div>
         <button type="submit">Опубликовать</button>
     </form>
+    <div>
+        <label class="btn btn-default">
+            <input type="file" (change)="selectFile($event)">
+        </label>
+        <input placeholder="Название файла" name="fileHolder.file.description" [(ngModel)]="description">
+        <button (click)="upload()">Сохранить файл</button>
+    </div>
 </div>

@@ -8,6 +8,12 @@
         <div *ngFor="let instruction of map.value">
             id = {{instruction.id}} theme = {{instruction.theme}} description = {{instruction.description}}
             <br>
+            <div *ngIf="instruction.files.length>0">
+                <div *ngFor="let files of instruction.files">
+                    <a href="/api/dictionary/file?filename={{files.url}}">description = {{files.description}}</a>
+                </div>
+            </div>
+            <br>
         </div>
         <br>
     </div>
