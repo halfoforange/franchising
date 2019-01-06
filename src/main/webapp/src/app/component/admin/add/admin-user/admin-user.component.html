@@ -1,0 +1,58 @@
+<form ngForm="user" (submit)="registerUser()">
+
+    <h2>Аккаунт</h2>
+    <input name="user.login" [(ngModel)]="user.login" required placeholder="Логин" #login="ngModel">
+    <div *ngIf="login.invalid && (login.dirty || login.touched)"
+         class="alert alert-danger">
+        <div *ngIf="login.errors.required">
+            Поле Логин обязательно
+        </div>
+    </div>
+    <input name="user.name" [(ngModel)]="user.name" required placeholder="Имя и Фамилия" #name="ngModel">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+         class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+            Поле Имя и Фамилия обязательно
+        </div>
+    </div>
+    <input name="user.password" [(ngModel)]="user.password" required placeholder="Пароль" #password="ngModel">
+    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+         class="alert alert-danger">
+        <div *ngIf="password.errors.required">
+            Поле Пароль обязательно
+        </div>
+    </div>
+    <input name="user.email" [(ngModel)]="user.email" email required placeholder="Email" #email="ngModel">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+         class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+            Поле email обязательно
+        </div>
+        <div *ngIf="email.errors.email">
+            Должен быть email
+        </div>
+    </div>
+    <input name="user.phone" [(ngModel)]="user.phone" placeholder="Телефон">
+
+    <div *ngFor="let city of cities" [ngModelGroup]="user.city">
+        {{city.name}}
+        <input type="radio" [(ngModel)]="user.city.id" value="{{city.id}}"
+               name="user.city.id" placeholder="{{city.name}}">
+    </div>
+    <h2>О точке</h2>
+    <label for="pointType">
+        Тип точки?
+    </label>
+    <select id="pointType" [(ngModel)]="user.pointType" name="user.pointType">
+        <option [ngValue]="o" *ngFor="let o of pointTypes">
+            {{o.name}}
+        </option>
+    </select>
+    <input name="user.address" [(ngModel)]="user.address" placeholder="Адрес">
+    <input name="user.places" [(ngModel)]="user.places" placeholder="Кол-во мест">
+    <input name="user.energy" [(ngModel)]="user.energy" placeholder="кВт">
+    <input name="user.manager" [(ngModel)]="user.manager" placeholder="Имя и Фамилия управляющего">
+    <input name="user.employees" [(ngModel)]="user.employees" placeholder="Количество сотрудников">
+
+    <button type="submit" [disabled]="email.invalid || name.invalid || login.invalid || password.invalid">Сохранить</button>
+</form>

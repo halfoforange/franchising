@@ -22,11 +22,6 @@ public class UserController extends BaseController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "registration", method = RequestMethod.POST)
-    public User registerNewUser(@RequestBody @Valid User user) throws Exception {
-        return userService.registerNewUser(user);
-    }
-
     @RequestMapping("login")
     public Principal user(Principal user) {
         return user;

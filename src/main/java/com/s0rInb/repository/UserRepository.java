@@ -9,4 +9,6 @@ import com.s0rInb.entity.User;
 public interface UserRepository extends JpaRepository<User,Long>, JpaSpecificationExecutor<User> {
 
     User findByEmailIgnoreCase(String email);
+
+    User findByLoginIgnoreCase(String login);
 }

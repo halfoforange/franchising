@@ -6,6 +6,7 @@ import {Instruction} from "../entity/instruction";
 import {Dictionary} from "../entity/dictionary";
 import "rxjs-compat/add/operator/map";
 import "rxjs-compat/add/operator/catch";
+import {User} from "../entity/user";
 @Injectable({
     providedIn: 'root'
 })
@@ -23,7 +24,7 @@ export class AdminService {
     }
 
     addInstruction(instruction: Instruction): Observable<any> {
-        return this.http.post('api/admin/instruction', instruction)
+        return this.http.post('/api/admin/instruction', instruction)
     }
 
     getInstructionList(): Observable<any> {
@@ -42,6 +43,9 @@ export class AdminService {
         const req = new HttpRequest('POST', '/api/admin/file', formdata);
 
         return this.http.request(req);
+    }
+    register(user: User): Observable<any> {
+        return this.http.post('/api/admin/user',user);
     }
 
 /*    getFiles(): Observable<string[]> {

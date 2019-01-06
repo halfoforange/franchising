@@ -18,4 +18,8 @@ export class DictionaryService {
     getCities(): Observable<any> {
         return this.http.get(this.DICTIONARY_PREFIX + 'City');
     }
+
+    getPointType(): Observable<any> {
+        return this.http.get(this.DICTIONARY_PREFIX+ 'PointType')
+    }
 }

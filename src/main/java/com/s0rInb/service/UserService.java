@@ -23,9 +23,12 @@ public class UserService {
         if (isEmailPresent(user.getEmail())) {
             throw new Exception("User with this email already exists: " + user.getEmail());
         }
+        if (isLoginPresent(user.getLogin())) {
+            throw new Exception("User with this login already exists: " + user.getEmail());
+        }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        emailService.sendSimpleMessage(user.getEmail(), "Вы успешно зарегистрировались", "Поздравляем с успешной регистрацией!");
+        //emailService.sendSimpleMessage(user.getEmail(), "Вы успешно зарегистрировались", "Поздравляем с успешной регистрацией!");
         return userRepository.save(user);
     }
 
@@ -35,5 +38,13 @@ public class UserService {
 
     private Boolean isEmailPresent(String email) {
         return findByEmail(email) != null;
+    }
+
+    private User findByLogin(String login) {
+        return userRepository.findByLoginIgnoreCase(login);
+    }
+
+    private Boolean isLoginPresent(String login) {
+        return findByLogin(login) != null;
     }
 }

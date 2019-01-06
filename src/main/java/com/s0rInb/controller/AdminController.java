@@ -4,11 +4,13 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.s0rInb.entity.File;
 import com.s0rInb.entity.Instruction;
 import com.s0rInb.entity.News;
+import com.s0rInb.entity.User;
 import com.s0rInb.entity.dictionary.Category;
 import com.s0rInb.entity.dictionary.Dictionary;
 import com.s0rInb.service.AdminService;
 import com.s0rInb.service.DictionaryService;
 import com.s0rInb.service.FileService;
+import com.s0rInb.service.UserService;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +41,9 @@ public class AdminController extends BaseController {
 
     @Autowired
     FileService fileService;
+
+    @Autowired
+    UserService userService;
 
     @GetMapping(value = "news/{id}")
     public News getNews(@PathVariable Long id) {
@@ -100,11 +106,9 @@ public class AdminController extends BaseController {
         }
     }
 
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    private static class FileHolder{
-        private File file;
-        private MultipartFile multipartFile;
+    @RequestMapping(value = "user", method = RequestMethod.POST)
+    public User registerNewUser(@RequestBody @Valid User user) throws Exception {
+        return userService.registerNewUser(user);
     }
+
 }

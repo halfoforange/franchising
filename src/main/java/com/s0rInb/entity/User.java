@@ -1,5 +1,7 @@
 package com.s0rInb.entity;
 
+import com.s0rInb.entity.dictionary.City;
+import com.s0rInb.entity.dictionary.PointType;
 import com.s0rInb.entity.enums.UserRole;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,11 +21,10 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull()
+    @NotNull
     private String password;
 
-    @Column(unique = true)
-    @NotNull
+    @Column(unique = true, name = "login", nullable = false)
     private String login;
     @NotNull
     @Email
@@ -32,5 +33,28 @@ public class User implements Serializable {
     @Column(name = "user_role")
     private UserRole userRole = UserRole.CUSTOMER;
 
+    @Column(columnDefinition = "varchar(512)")
     private String name;
+
+    @JoinColumn
+    @ManyToOne
+    private City city;
+
+    @Column(columnDefinition = "varchar(512)")
+    private String phone;
+
+    @JoinColumn
+    @ManyToOne
+    private PointType pointType;
+
+    @Column(columnDefinition = "varchar(1024)")
+    private String address;
+
+    private String places;
+
+    private String energy;
+    @Column(columnDefinition = "varchar(512)")
+    private String manager;
+
+    private String employees;
 }
